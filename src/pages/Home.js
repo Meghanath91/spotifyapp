@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Login from "../components/Login";
+import Search from "../components/Search";
 import getUrlParams from "../config/getUrlParams";
 
 export default function Home() {
@@ -11,5 +12,5 @@ export default function Home() {
   }, [accessToken]);
 
 
-  return <div>{accessToken ? <div> iam in home</div> : <Login />}</div>;
+  return <div>{accessToken ? <div> <Search /></div> : <Login />}</div>;
 }
