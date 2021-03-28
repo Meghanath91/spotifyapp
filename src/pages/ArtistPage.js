@@ -8,7 +8,6 @@ export default function ArtistPage() {
   let { id } = useParams();
   const { token } = useContext(TokenContext);
   const [albums, setAlbums] = useState([]);
-  console.log(token, "*******************");
   useEffect(() => {
     const url = `https://api.spotify.com/v1/artists/${id}/albums`;
 
@@ -22,9 +21,8 @@ export default function ArtistPage() {
     Axios.get(url, headers)
       .then((response) => {
         const results = response.data.items;
-        console.log(typeof (results), response.data.items)
+
         setAlbums(results);
-        // console.log(albums);
       })
       .catch((err) => {
         console.log(err.response);
@@ -34,9 +32,7 @@ export default function ArtistPage() {
 
   const displayAlbums = () => {
     return albums.map((album) => {
-      console.log(album);
       return (
-
         <div key={album.id}>
           <Album album={album} />
         </div>
