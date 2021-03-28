@@ -1,11 +1,14 @@
 
 import './App.css';
 import Routes from './routes/Routes';
+import ContextProvider from "./context/index"
 
 function App() {
   return (
     <div className="App">
-      <Routes />
+      <ContextProvider>
+        <Routes />
+      </ContextProvider>
     </div>
   );
 }

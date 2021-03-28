@@ -1,49 +1,68 @@
-import React, { useState, useEffect } from "react";
-import Axios from 'axios'
+import React, { useState, useEffect, useContext } from "react";
+import Axios from "axios";
 import DisplaySearchResults from "../components/DisplaySearchResults";
 import Login from "../components/Login";
 import Search from "../components/Search";
 import getUrlParams from "../config/getUrlParams";
-
+import { TokenContext } from "../context/TokenContext"
 export default function Home() {
-
   const [accessToken, setAccessToken] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [artists, setArtists] = useState([]);
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
+
+  //using context to set a global state user
+  const { token, setToken } = useContext(TokenContext);
+
+  console.log(token, "token===========>")
 
   useEffect(() => {
     const token = getUrlParams();
+    setToken(token)
     setAccessToken(token);
-  }, [accessToken]);
-
-
-
+  }, [accessToken, setToken]);
 
   useEffect(() => {
-    console.log(searchQuery);
+
     const searchUrl = `https://api.spotify.com/v1/search?query=${encodeURIComponent(
       searchQuery
     )}&type=artist`;
+
     const headers = {
       headers: {
-        Accept: "application/json",
+        'Accept': "application/json",
         "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+        'Authorization': `Bearer ${accessToken}`,
       },
     };
-    Axios
-      .get(searchUrl, headers)
+    Axios.get(searchUrl, headers)
       .then((response) => {
         const results = response.data.artists.items;
+        // const next = response.data;
         setArtists(results);
-        console.log(results);
+        // console.log(next);
       })
       .catch((err) => {
         console.log(err.response);
-        setError("Something went wrong");
+        // setError("Something went wrong");
       });
-  }, [searchQuery, accessToken])
+  }, [searchQuery, accessToken]);
 
-  return <div>{accessToken ? <div> <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} /><DisplaySearchResults artists={artists} /></div> : <Login />}</div>;
+  return (
+    <div>
+      {accessToken ? (
+        <div>
+          {" "}
+          <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+          <DisplaySearchResults
+            artists={artists}
+            accessToken={accessToken}
+          // fetchmoreData={fetchMoreData}
+          />
+        </div>
+      ) : (
+          <Login />
+        )}
+    </div>
+  );
 }

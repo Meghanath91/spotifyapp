@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Artist from "../pages/Artist";
+import ArtistPage from "../pages/ArtistPage";
 import Home from "../pages/Home";
 
 export default function Routes() {
@@ -12,8 +12,8 @@ export default function Routes() {
         <Route path="/" exact>
           <Home />
         </Route>
-        <Route path="/:id" exact>
-          <Artist />
+        <Route path="/:id/:token" exact>
+          <ArtistPage />
         </Route>
       </div>
     </Router>
