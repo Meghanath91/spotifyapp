@@ -1,6 +1,6 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize";
 const redirectUri = window.location.origin + '/';
-const clientId = process.env.REACT_APP_CLIENT_ID;
+const clientId = "d1f1dff8922742839961a14abbdd419f"
 
 const scopes = [
   "user-read-currently-playing",
