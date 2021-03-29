@@ -1,8 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux"
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
+
 import Artist from "./Artist";
-import { useSelector } from "react-redux"
 
 export default function DisplaySearchResults() {
   const { artists } = useSelector((state) => state);

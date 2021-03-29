@@ -10,7 +10,6 @@ import { setAlbums } from "../redux/actions/albums";
 import callApi from "../helpers/getAlbums";
 
 export default function ArtistPage() {
-
   const { albums } = useSelector((state) => state);
   let { id } = useParams();
   const dispatch = useDispatch();

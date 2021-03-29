@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useDispatch } from "react-redux";
+
 import DisplaySearchResults from "../components/DisplaySearchResults";
 import Login from "../components/Login";
 import Search from "../components/Search";
 import getUrlParams from "../helpers/getUrlParams";
-import { TokenContext } from "../context/TokenContext";
-import { useDispatch } from "react-redux";
-import { setArtists } from "../redux/actions/artists";
 import callApi from "../helpers/getArtists";
+import { TokenContext } from "../context/TokenContext";
+import { setArtists } from "../redux/actions/artists";
 
 export default function HomePage() {
-  const dispatch = useDispatch();
   const [accessToken, setAccessToken] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-
+  const dispatch = useDispatch();
   //using context to set a global state user
   const { setToken } = useContext(TokenContext);
 
