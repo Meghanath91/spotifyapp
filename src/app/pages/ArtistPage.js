@@ -18,7 +18,6 @@ export default function ArtistPage() {
   const [nextPage, setNextPage] = useState("");
 
   const fetchmoreData = () => {
-    console.log("fetchmore data runs")
     const headers = {
       headers: {
         Accept: "application/json",
@@ -32,7 +31,7 @@ export default function ArtistPage() {
       .then(async (response) => {
         const results = await response.data.items;
         const next = await response.data.next;
-        console.log(next, results)
+        console.log(next, results);
         dispatch(loadMoreAlbums(results));
         setNextPage(next);
       })
@@ -47,7 +46,6 @@ export default function ArtistPage() {
       .then(async (response) => {
         const results = await response.data.items;
         const next = await response.data.next;
-        console.log(next, "next")
         dispatch(setAlbums(results));
         setNextPage(next);
       })
@@ -68,7 +66,7 @@ export default function ArtistPage() {
   };
   return (
     <div>
-      <h1>album</h1>
+      <h1>artist's Name</h1>
       <h3>Albums</h3>
       <div>
         <InfiniteScroll

@@ -10,10 +10,8 @@ export let albumsReducer = (state = albums, action) => {
       return [...newAlbums];
     case LOAD_MORE_ALBUMS:
       newAlbums = [...state];
-      console.log(newAlbums)
       newAlbums.push(...action.payload);
-      console.log(newAlbums)
-      return [...newAlbums]
+      return [...newAlbums];
     default:
   }
   return state;

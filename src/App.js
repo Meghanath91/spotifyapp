@@ -1,7 +1,6 @@
-
 import './App.css';
-import Routes from './routes/Routes';
-import ContextProvider from "./context/index"
+import Routes from './app/routes/Routes';
+import ContextProvider from "./app/context/index"
 
 function App() {
   return (

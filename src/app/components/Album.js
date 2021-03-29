@@ -9,7 +9,6 @@ export default function Album({ album }) {
   };
   return (
     <div>
-      <p>{album.name}</p>
       <img
         src={album.images.length ? album.images[0].url : noImage}
         alt={album.name}
