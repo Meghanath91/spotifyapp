@@ -1,10 +1,11 @@
 import { createStore, combineReducers } from 'redux';
-// import { reducer } from './reducer';
-import { artistsReducer } from './Reducers/artists';
+import { albumsReducer } from './reducers/albums';
+import { artistsReducer } from './reducers/artists';
 
 export const store = createStore(
   combineReducers({
-    artists: artistsReducer
+    artists: artistsReducer,
+    albums: albumsReducer
   })
 );
 
