@@ -26,7 +26,7 @@ export default function DisplaySearchResults({ fetchmoreData, nextPage }) {
         dataLength={artists.length}
         next={fetchmoreData}
         loader={<h4>Loading...</h4>}
-        hasMore={true}
+        hasMore={nextPage}
         height="60vh"
         style={{
           display: "flex",

@@ -31,8 +31,8 @@ export default function HomePage() {
       .then(async (response) => {
         const results = await response.data.artists.items;
         const next = await response.data.artists.next;
-        setNextPage(next);
         dispatch(loadMoreArtists(results));
+        setNextPage(next);
       })
       .catch((err) => {
         console.log(err.response);
@@ -52,8 +52,8 @@ export default function HomePage() {
         const results = await response.data.artists.items;
         const next = await response.data.artists.next;
 
-        setNextPage(next);
         dispatch(setArtists(results));
+        setNextPage(next);
       })
       .catch((err) => {
         console.log(err.response);
@@ -69,7 +69,7 @@ export default function HomePage() {
           <br />
           <DisplaySearchResults
             fetchmoreData={fetchmoreData}
-            nextPage={nextPage}
+            nextPage={true}
           />
         </div>
       ) : (

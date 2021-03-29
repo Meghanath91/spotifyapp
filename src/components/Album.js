@@ -4,7 +4,7 @@ import noImage from "../images/no-image.jpg";
 export default function Album({ album }) {
   const displayArtists = () => {
     return album.artists.map((artist) => {
-      return <li>{artist.name}</li>;
+      return <li key={artist.id}>{artist.name}</li>;
     });
   };
   return (
