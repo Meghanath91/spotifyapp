@@ -2,15 +2,16 @@ import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
 import Artist from "./Artist";
+import { useSelector } from "react-redux"
 
-export default function DisplaySearchResults({ artists, fetchmoreData, accessToken }) {
-
+export default function DisplaySearchResults({ accessToken }) {
+  const allArtists = useSelector((state) => state);
   const displayArtists = () => {
-    // console.log(accessToken, "==========>")
-    return artists.map((artist) => {
+
+    return allArtists.map((artist) => {
       return (
         <Link
-          to={`/${artist.id}/${accessToken}`}
+          to={`/${artist.id}`}
           key={artist.id}
           className="entity-link"
         ><Artist artist={artist} /></Link>
@@ -21,7 +22,7 @@ export default function DisplaySearchResults({ artists, fetchmoreData, accessTok
   return (
     <div>
       <InfiniteScroll
-        dataLength={artists.length}
+        dataLength={allArtists.length}
         // next={fetchmoreData}
         loader={<h4>Loading...</h4>}
         // hasMore={true}

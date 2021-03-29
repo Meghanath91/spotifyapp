@@ -12,7 +12,7 @@ export default function Routes() {
         <Route path="/" exact>
           <Home />
         </Route>
-        <Route path="/:id/:token" exact>
+        <Route path="/:id" exact>
           <ArtistPage />
         </Route>
       </div>

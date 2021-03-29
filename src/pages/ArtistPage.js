@@ -21,7 +21,6 @@ export default function ArtistPage() {
     Axios.get(url, headers)
       .then((response) => {
         const results = response.data.items;
-
         setAlbums(results);
       })
       .catch((err) => {

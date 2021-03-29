@@ -5,10 +5,13 @@ import Login from "../components/Login";
 import Search from "../components/Search";
 import getUrlParams from "../config/getUrlParams";
 import { TokenContext } from "../context/TokenContext";
+import { useDispatch } from "react-redux";
+import { setArtists } from "../redux/actions";
 export default function Home() {
+  const dispatch = useDispatch();
   const [accessToken, setAccessToken] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [artists, setArtists] = useState([]);
+  // const [artists, setArtists] = useState([]);
   // const [error, setError] = useState("");
 
   //using context to set a global state user
@@ -35,13 +38,14 @@ export default function Home() {
     Axios.get(searchUrl, headers)
       .then((response) => {
         const results = response.data.artists.items;
-        setArtists(results);
+        dispatch(setArtists(results));
+        console.log(results)
       })
       .catch((err) => {
         console.log(err.response);
         // setError("Something went wrong");
       });
-  }, [searchQuery, accessToken]);
+  }, [searchQuery, accessToken, dispatch]);
 
   return (
     <div>
@@ -50,9 +54,7 @@ export default function Home() {
           {" "}
           <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           <DisplaySearchResults
-            artists={artists}
             accessToken={accessToken}
-          // fetchmoreData={fetchMoreData}
           />
         </div>
       ) : (
