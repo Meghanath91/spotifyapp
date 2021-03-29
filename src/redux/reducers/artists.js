@@ -5,7 +5,7 @@ export let artistsReducer = (state = artists, action) => {
 
   switch (action.type) {
     case SET_ARTISTS:
-      newArtists = [...state];
+      newArtists = [];
       newArtists.push(...action.payload);
       return [...newArtists];
 

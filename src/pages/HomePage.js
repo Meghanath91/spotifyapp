@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
-import Axios from "axios";
 import DisplaySearchResults from "../components/DisplaySearchResults";
 import Login from "../components/Login";
 import Search from "../components/Search";
-import getUrlParams from "../config/getUrlParams";
+import getUrlParams from "../helpers/getUrlParams";
 import { TokenContext } from "../context/TokenContext";
 import { useDispatch } from "react-redux";
 import { setArtists } from "../redux/actions/artists";
+import callApi from "../helpers/getArtists";
+
 export default function HomePage() {
   const dispatch = useDispatch();
   const [accessToken, setAccessToken] = useState(null);
@@ -22,22 +23,10 @@ export default function HomePage() {
   }, [accessToken, setToken]);
 
   useEffect(() => {
-    const searchUrl = `https://api.spotify.com/v1/search?query=${encodeURIComponent(
-      searchQuery
-    )}&type=artist`;
-
-    const headers = {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
-    Axios.get(searchUrl, headers)
-      .then((response) => {
-        const results = response.data.artists.items;
+    callApi(searchQuery, accessToken)
+      .then(async (response) => {
+        const results = await response.data.artists.items;
         dispatch(setArtists(results));
-        console.log(results);
       })
       .catch((err) => {
         console.log(err.response);
@@ -49,8 +38,8 @@ export default function HomePage() {
     <div>
       {accessToken ? (
         <div>
-          {" "}
           <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+          <br />
           <DisplaySearchResults accessToken={accessToken} />
         </div>
       ) : (

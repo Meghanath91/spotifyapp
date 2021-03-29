@@ -1,14 +1,10 @@
 export const authEndpoint = "https://accounts.spotify.com/authorize";
-const redirectUri = window.location.origin + '/';
-const clientId = "d1f1dff8922742839961a14abbdd419f"
+const redirectUri = window.location.origin + "/";
+const clientId = process.env.REACT_APP_CLIENT_ID;
 
-const scopes = [
-  "user-read-currently-playing",
-  "user-read-recently-played",
-  "user-read-playback-state",
-  "user-top-read",
-  "user-modify-playback-state",
-];
+// add value to scope for different permissions for eg: "user-read-currently-playing","user-top-read",
+const scopes = [];
 
-
-export const loginUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`;
+export const loginUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
+  "%20"
+)}&response_type=token&show_dialog=true`;

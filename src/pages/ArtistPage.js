@@ -1,33 +1,25 @@
 import React, { useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import Axios from "axios";
-import { TokenContext } from "../context/TokenContext";
-import Album from "../components/Album";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import { useDispatch } from "react-redux";
+import { TokenContext } from "../context/TokenContext";
+import Album from "../components/Album";
 import { setAlbums } from "../redux/actions/albums";
-import { useSelector } from "react-redux"
+import callApi from "../helpers/getAlbums";
 
 export default function ArtistPage() {
+
   const { albums } = useSelector((state) => state);
   let { id } = useParams();
   const dispatch = useDispatch();
   const { token } = useContext(TokenContext);
 
   useEffect(() => {
-    const url = `https://api.spotify.com/v1/artists/${id}/albums`;
-
-    const headers = {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    Axios.get(url, headers)
-      .then((response) => {
-        const results = response.data.items;
+    callApi(id, token)
+      .then(async (response) => {
+        const results = await response.data.items;
         dispatch(setAlbums(results));
       })
       .catch((err) => {
