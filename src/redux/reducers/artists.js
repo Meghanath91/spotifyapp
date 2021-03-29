@@ -1,4 +1,4 @@
-import { SET_ARTISTS } from "../actions";
+import { SET_ARTISTS } from "../actions/artists";
 import { artists } from "../states";
 export let artistsReducer = (state = artists, action) => {
   let newArtists;

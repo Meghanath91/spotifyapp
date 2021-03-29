@@ -6,7 +6,7 @@ import Album from "../components/Album";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import { useDispatch } from "react-redux";
-import { setAlbums } from "../redux/actions";
+import { setAlbums } from "../redux/actions/albums";
 import { useSelector } from "react-redux"
 
 export default function ArtistPage() {

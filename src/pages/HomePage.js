@@ -6,13 +6,11 @@ import Search from "../components/Search";
 import getUrlParams from "../config/getUrlParams";
 import { TokenContext } from "../context/TokenContext";
 import { useDispatch } from "react-redux";
-import { setArtists } from "../redux/actions";
-export default function Home() {
+import { setArtists } from "../redux/actions/artists";
+export default function HomePage() {
   const dispatch = useDispatch();
   const [accessToken, setAccessToken] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-  // const [artists, setArtists] = useState([]);
-  // const [error, setError] = useState("");
 
   //using context to set a global state user
   const { setToken } = useContext(TokenContext);
@@ -39,7 +37,7 @@ export default function Home() {
       .then((response) => {
         const results = response.data.artists.items;
         dispatch(setArtists(results));
-        console.log(results)
+        console.log(results);
       })
       .catch((err) => {
         console.log(err.response);
@@ -53,9 +51,7 @@ export default function Home() {
         <div>
           {" "}
           <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-          <DisplaySearchResults
-            accessToken={accessToken}
-          />
+          <DisplaySearchResults accessToken={accessToken} />
         </div>
       ) : (
           <Login />

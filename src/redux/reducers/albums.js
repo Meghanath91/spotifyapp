@@ -1,4 +1,4 @@
-import { SET_ALBUMS } from "../actions";
+import { SET_ALBUMS } from "../actions/albums";
 import { albums } from "../states";
 export let albumsReducer = (state = albums, action) => {
   let newAlbums;
