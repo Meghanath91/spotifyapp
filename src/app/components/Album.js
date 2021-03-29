@@ -1,6 +1,6 @@
 import React from "react";
 import noImage from "../images/no-image.jpg";
-
+import previewBtn from "../images/1432343177.svg";
 export default function Album({ album }) {
   const displayArtists = () => {
     return album.artists.map((artist) => {
@@ -20,7 +20,11 @@ export default function Album({ album }) {
       <p>{album.release_date}</p>
       <p>{album.total_tracks} tracks</p>
       <div className="footer">
-        <a href={album.external_urls.spotify}>Preview on Spotify</a>
+        <a className="footer-link" href={album.external_urls.spotify}>
+          {" "}
+          <img src={previewBtn} alt="preview-btn" width="20px" height="20px" />
+          Preview on Spotify
+        </a>
       </div>
     </div>
   );

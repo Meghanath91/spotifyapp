@@ -1,45 +1,51 @@
 import { TextField } from "@material-ui/core";
 import React from "react";
 import { useDispatch } from "react-redux";
-import '../../App.css'
+import "../../App.css";
 import { makeStyles } from "@material-ui/core/styles";
 
 export default function Search({ searchQuery, setSearchQuery }) {
   const dispatch = useDispatch();
-  const handleChange = (e) => {
-    const target = e.target.value;
-    dispatch(setSearchQuery(target));
-  };
+
 
   const useStyles = makeStyles((theme) => ({
     searchField: {
       width: "30%",
-      '& input:valid + fieldset': {
-        borderColor: 'yellowgreen',
+      [theme.breakpoints.down('sm')]: {
+        width: "90%"
+      },
+      "& input:valid + fieldset": {
+        borderColor: "yellowgreen",
         borderWidth: 2,
       },
-      '& label.Mui-focused': {
-        color: 'yellowgreen',
+      "& label.Mui-focused": {
+        color: "yellowgreen",
       },
-      '& .MuiInput-underline:after': {
-        borderBottomColor: 'yellowgreen',
+      "& .MuiInput-underline:after": {
+        borderBottomColor: "yellowgreen",
       },
-      '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-          borderColor: 'red',
+      "& .MuiOutlinedInput-root": {
+        "& fieldset": {
+          borderColor: "red",
         },
-        '&:hover fieldset': {
-          borderColor: 'yellowgreen',
+        "&:hover fieldset": {
+          borderColor: "yellowgreen",
         },
-        '&.Mui-focused fieldset': {
-          borderColor: 'yellowgreen',
+        "&.Mui-focused fieldset": {
+          borderColor: "yellowgreen",
         },
       },
-
     },
-
   }));
+
   const classes = useStyles();
+
+
+
+  const handleChange = (e) => {
+    const target = e.target.value;
+    dispatch(setSearchQuery(target));
+  };
 
   return (
     <div className="search-container">

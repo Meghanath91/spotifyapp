@@ -17,7 +17,6 @@
 /********** Login **********/
 
 .login-container {
-  background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,12 +25,13 @@
   height: 100%;
 }
 .login-container img {
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 100px;
+  margin-right: 50px;
 }
 .login-container a {
   text-decoration: none;
-  color: #fff;
+  color: #000;
   font-size: 3rem;
 }
 
@@ -71,6 +71,11 @@
 }
 /********** Artist **********/
 .artist-container {
+  flex-shrink: inherit;
+  overflow: hidden;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
   height: 400px;
   margin: 5px;
   border-radius: 10px;
@@ -101,6 +106,23 @@
   margin: 0;
   padding: 0;
 }
-/* .footer{
-  d
-} */
+.footer-link {
+  padding: 3px;
+  text-decoration: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+@media only screen and (max-width: 768px) {
+  .display-container {
+    width: 100%;
+  }
+  .scroll-container {
+    width: 100%;
+  }
+  .artist-container {
+    width: 300px;
+    margin-left: 0px;
+  }
+}

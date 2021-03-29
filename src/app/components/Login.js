@@ -1,6 +1,6 @@
 import React from "react";
 import { loginUrl } from "../config/spotifyConfig";
-import logo from "../images/spotify.png";
+import logo from "../images/5.png";
 import '../../App.css'
 export default function Login() {
   return (

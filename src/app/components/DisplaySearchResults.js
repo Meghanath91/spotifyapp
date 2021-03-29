@@ -23,6 +23,7 @@ export default function DisplaySearchResults({ fetchmoreData, nextPage }) {
   return (
     <div className="display-container">
       <InfiniteScroll
+        className="scroll-container"
         dataLength={artists.length}
         next={fetchmoreData}
         loader={searchQuery !== '' ? (<h4>Loading...</h4>) : ''}
