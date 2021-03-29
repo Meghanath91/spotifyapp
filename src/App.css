@@ -54,3 +54,23 @@
   background: #fff;
   width: 30%;
 }
+/********** DisplaySearchResults **********/
+.display-container {
+  margin: 2%;
+}
+.entity-link {
+  text-decoration: none;
+  color: yellowgreen;
+}
+/********** Artist **********/
+.artist-container {
+  height: 400px;
+  margin: 5px;
+  border-radius: 10px;
+  width: 200px;
+  padding: 10px;
+  background-color: rgb(0, 0, 0);
+}
+.artist-container p {
+  text-decoration: none;
+}

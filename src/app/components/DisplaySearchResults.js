@@ -21,7 +21,7 @@ export default function DisplaySearchResults({ fetchmoreData, nextPage }) {
   };
 
   return (
-    <div>
+    <div className="display-container">
       <InfiniteScroll
         dataLength={artists.length}
         next={fetchmoreData}
