@@ -1,10 +1,12 @@
 import { TextField } from "@material-ui/core";
 import React from "react";
+import { useDispatch } from "react-redux";
 
 export default function Search({ searchQuery, setSearchQuery }) {
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     const target = e.target.value;
-    setSearchQuery(target);
+    dispatch(setSearchQuery(target));
   };
 
   return (

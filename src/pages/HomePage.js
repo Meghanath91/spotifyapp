@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import DisplaySearchResults from "../components/DisplaySearchResults";
 import Login from "../components/Login";
@@ -8,16 +8,17 @@ import getUrlParams from "../helpers/getUrlParams";
 import callApi from "../helpers/getArtists";
 import { TokenContext } from "../context/TokenContext";
 import { setArtists, loadMoreArtists } from "../redux/actions/artists";
+import { setSearchQuery } from "../redux/actions/search"
 import axios from "axios";
 
 export default function HomePage() {
   const [accessToken, setAccessToken] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
   const [nextPage, setNextPage] = useState("");
   const dispatch = useDispatch();
   //using context to set a global state user
   const { setToken } = useContext(TokenContext);
-
+  const { searchQuery } = useSelector((state) => state);
   const fetchmoreData = () => {
     const headers = {
       headers: {

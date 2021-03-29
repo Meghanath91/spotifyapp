@@ -1,7 +1,8 @@
-export const LOAD_MORE_ARTISTS = 'LOAD_MORE_ARTISTS';
-export function loadMoreArtists(artists) {
+export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
+export function setSearchQuery(searchQuery) {
+  console.log(searchQuery, "in action=>")
   return {
-    type: LOAD_MORE_ARTISTS,
-    payload: artists,
+    type: SET_SEARCH_QUERY,
+    payload: searchQuery,
   };
 }
