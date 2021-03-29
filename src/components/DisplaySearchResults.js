@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import Artist from "./Artist";
 
-export default function DisplaySearchResults() {
+export default function DisplaySearchResults({ fetchmoreData, nextPage }) {
   const { artists } = useSelector((state) => state);
 
   const displayArtists = () => {
@@ -24,9 +24,9 @@ export default function DisplaySearchResults() {
     <div>
       <InfiniteScroll
         dataLength={artists.length}
-        // next={fetchmoreData}
+        next={fetchmoreData}
         loader={<h4>Loading...</h4>}
-        // hasMore={true}
+        hasMore={true}
         height="60vh"
         style={{
           display: "flex",
