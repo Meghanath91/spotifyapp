@@ -1,4 +1,5 @@
-/* Navbar */
+/********** Navbar **********/
+
 .navbar img {
   width: 50px;
   height: 50px;
@@ -12,7 +13,8 @@
   top: 0;
   width: 100%;
 }
-/* Login */
+
+/********** Login **********/
 
 .login-container {
   background-color: #000;
@@ -21,6 +23,7 @@
   align-items: center;
   margin-top: 40vh;
   cursor: grab;
+  height: 100%;
 }
 .login-container img {
   height: 200px;
@@ -30,4 +33,24 @@
   text-decoration: none;
   color: #fff;
   font-size: 3rem;
+}
+
+/********** Home Page **********/
+.search-display-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/********** Search **********/
+.search-container {
+  margin-top: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.search-field {
+  background: #fff;
+  width: 30%;
 }

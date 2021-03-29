@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import '../../App.css'
 import DisplaySearchResults from "../components/DisplaySearchResults";
 import Login from "../components/Login";
 import Search from "../components/Search";
@@ -63,9 +63,9 @@ export default function HomePage() {
   }, [searchQuery, accessToken, dispatch]);
 
   return (
-    <div>
+    <div className="home-container">
       {accessToken ? (
-        <div>
+        <div className="search-display-container">
           <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           <br />
           <DisplaySearchResults

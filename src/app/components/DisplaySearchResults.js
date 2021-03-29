@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import Artist from "./Artist";
 
 export default function DisplaySearchResults({ fetchmoreData, nextPage }) {
-  const { artists } = useSelector((state) => state);
-
+  const { artists, searchQuery } = useSelector((state) => state);
+  console.log(searchQuery, "searchquery")
   const displayArtists = () => {
     return artists.map((artist) => {
       return (
@@ -25,7 +25,7 @@ export default function DisplaySearchResults({ fetchmoreData, nextPage }) {
       <InfiniteScroll
         dataLength={artists.length}
         next={fetchmoreData}
-        loader={<h4>Loading...</h4>}
+        loader={searchQuery !== '' ? (<h4>Loading...</h4>) : ''}
         hasMore={nextPage}
         height="60vh"
         style={{
@@ -33,11 +33,11 @@ export default function DisplaySearchResults({ fetchmoreData, nextPage }) {
           flexWrap: "wrap",
           justifyContent: "center",
         }}
-      // endMessage={
-      //   <p style={{ textAlign: "center" }}>
-      //     <b>That's it !!!</b>
-      //   </p>
-      // }
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>That's it !!!</b>
+          </p>
+        }
       >
         {displayArtists()}
       </InfiniteScroll>
