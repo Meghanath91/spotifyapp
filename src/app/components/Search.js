@@ -15,24 +15,24 @@ export default function Search({ searchQuery, setSearchQuery }) {
     searchField: {
       width: "30%",
       '& input:valid + fieldset': {
-        borderColor: 'green',
+        borderColor: 'yellowgreen',
         borderWidth: 2,
       },
       '& label.Mui-focused': {
-        color: 'green',
+        color: 'yellowgreen',
       },
       '& .MuiInput-underline:after': {
-        borderBottomColor: 'green',
+        borderBottomColor: 'yellowgreen',
       },
       '& .MuiOutlinedInput-root': {
         '& fieldset': {
           borderColor: 'red',
         },
         '&:hover fieldset': {
-          borderColor: 'yellow',
+          borderColor: 'yellowgreen',
         },
         '&.Mui-focused fieldset': {
-          borderColor: 'green',
+          borderColor: 'yellowgreen',
         },
       },
 

@@ -16,7 +16,7 @@ export default function ArtistPage() {
   const dispatch = useDispatch();
   const { token } = useContext(TokenContext);
   const [nextPage, setNextPage] = useState("");
-
+  const [artist, setArtist] = useState("")
   const fetchmoreData = () => {
     const headers = {
       headers: {
@@ -31,7 +31,6 @@ export default function ArtistPage() {
       .then(async (response) => {
         const results = await response.data.items;
         const next = await response.data.next;
-        console.log(next, results);
         dispatch(loadMoreAlbums(results));
         setNextPage(next);
       })
@@ -45,6 +44,8 @@ export default function ArtistPage() {
     callApi(id, token)
       .then(async (response) => {
         const results = await response.data.items;
+        const fetchArtist = await results[0].artists[0].name
+        setArtist(fetchArtist)
         const next = await response.data.next;
         dispatch(setAlbums(results));
         setNextPage(next);
@@ -65,9 +66,12 @@ export default function ArtistPage() {
     });
   };
   return (
-    <div>
-      <h1>artist's Name</h1>
-      <h3>Albums</h3>
+    <div className="artist-page-conatainer">
+      <div className="title-container">
+
+        <h1>{artist}</h1>
+        <h3>Albums</h3>
+      </div>
       <div>
         <InfiniteScroll
           dataLength={albums.length}

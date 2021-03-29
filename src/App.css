@@ -41,7 +41,14 @@
   flex-direction: column;
   justify-content: flex-start;
 }
-
+/********** Artist Page **********/
+.artist-page-conatainer {
+  margin-top: 10vh;
+  color: #000;
+}
+.title-container {
+  margin-left: 40px;
+}
 /********** Search **********/
 .search-container {
   margin-top: 20vh;
@@ -74,3 +81,26 @@
 .artist-container p {
   text-decoration: none;
 }
+
+/********** Album **********/
+.album-container {
+  flex-shrink: inherit;
+  overflow: hidden;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  color: yellowgreen;
+  height: 500px;
+  margin: 5px;
+  border-radius: 10px;
+  width: 200px;
+  padding: 10px;
+  background-color: rgb(0, 0, 0);
+}
+.album-container p {
+  margin: 0;
+  padding: 0;
+}
+/* .footer{
+  d
+} */

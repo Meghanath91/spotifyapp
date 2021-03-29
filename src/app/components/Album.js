@@ -4,11 +4,11 @@ import noImage from "../images/no-image.jpg";
 export default function Album({ album }) {
   const displayArtists = () => {
     return album.artists.map((artist) => {
-      return <li key={artist.id}>{artist.name}</li>;
+      return <p key={artist.id}>{artist.name}</p>;
     });
   };
   return (
-    <div>
+    <div className="album-container">
       <img
         src={album.images.length ? album.images[0].url : noImage}
         alt={album.name}
@@ -18,8 +18,10 @@ export default function Album({ album }) {
       <p>{album.name}</p>
       {displayArtists()}
       <p>{album.release_date}</p>
-      <p>{album.total_tracks}</p>
-      <a href={album.external_urls.spotify}>Preview</a>
+      <p>{album.total_tracks} tracks</p>
+      <div className="footer">
+        <a href={album.external_urls.spotify}>Preview on Spotify</a>
+      </div>
     </div>
   );
 }

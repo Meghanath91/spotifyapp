@@ -7,7 +7,7 @@ import Artist from "./Artist";
 
 export default function DisplaySearchResults({ fetchmoreData, nextPage }) {
   const { artists, searchQuery } = useSelector((state) => state);
-  console.log(searchQuery, "searchquery")
+
   const displayArtists = () => {
     return artists.map((artist) => {
       return (
