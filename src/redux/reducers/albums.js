@@ -5,7 +5,7 @@ export let albumsReducer = (state = albums, action) => {
 
   switch (action.type) {
     case SET_ALBUMS:
-      newAlbums = [...state];
+      newAlbums = [];
       newAlbums.push(...action.payload);
       return [...newAlbums];
 
