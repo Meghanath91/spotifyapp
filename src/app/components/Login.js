@@ -3,7 +3,7 @@ import { loginUrl } from "../config/spotifyConfig";
 import logo from "../images/spotify.png";
 export default function Login() {
   return (
-    <div>
+    <div className="login-container">
       <img src={logo} alt="logo" />
       <a href={loginUrl}>LOGIN</a>
     </div>
