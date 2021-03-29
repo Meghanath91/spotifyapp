@@ -1,4 +1,4 @@
-import { SET_ARTISTS, LOAD_MORE_ARTISTS } from "../actions/artists";
+import { SET_ARTISTS, LOAD_MORE_ARTISTS, CLEAR_ARTISTS } from "../actions/artists";
 import { artists } from "../states";
 export let artistsReducer = (state = artists, action) => {
   let newArtists;
@@ -12,7 +12,8 @@ export let artistsReducer = (state = artists, action) => {
       newArtists = [...state];
       newArtists.push(...action.payload);
       return [...newArtists];
-
+    case CLEAR_ARTISTS:
+      return [];
     default:
   }
   return state;

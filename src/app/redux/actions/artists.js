@@ -12,3 +12,11 @@ export function loadMoreArtists(artists) {
     payload: artists,
   };
 }
+
+export const CLEAR_ARTISTS = "CLEAR_ARTISTS";
+export function clearArtists() {
+  return {
+    type: SET_ARTISTS,
+    payload: [],
+  };
+}

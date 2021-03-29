@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import '../../App.css'
+import "../../App.css";
 import DisplaySearchResults from "../components/DisplaySearchResults";
 import Login from "../components/Login";
 import Search from "../components/Search";
@@ -8,27 +8,17 @@ import getUrlParams from "../helpers/getUrlParams";
 import callApi from "../helpers/getArtists";
 import { TokenContext } from "../context/TokenContext";
 import { setArtists, loadMoreArtists } from "../redux/actions/artists";
-import { setSearchQuery } from "../redux/actions/search"
-import axios from "axios";
+import { setSearchQuery } from "../redux/actions/search";
 
 export default function HomePage() {
   const [accessToken, setAccessToken] = useState(null);
-  // const [searchQuery, setSearchQuery] = useState("");
   const [nextPage, setNextPage] = useState("");
   const dispatch = useDispatch();
   //using context to set a global state user
   const { setToken } = useContext(TokenContext);
   const { searchQuery } = useSelector((state) => state);
   const fetchmoreData = () => {
-    const headers = {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-    };
-    axios
-      .get(nextPage, headers)
+    callApi(nextPage, accessToken)
       .then(async (response) => {
         const results = await response.data.artists.items;
         const next = await response.data.artists.next;
@@ -68,10 +58,7 @@ export default function HomePage() {
         <div className="search-display-container">
           <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           <br />
-          <DisplaySearchResults
-            fetchmoreData={fetchmoreData}
-            nextPage={true}
-          />
+          <DisplaySearchResults fetchmoreData={fetchmoreData} nextPage={true} />
         </div>
       ) : (
           <Login />

@@ -5,3 +5,4 @@ export function setSearchQuery(searchQuery) {
     payload: searchQuery,
   };
 }
+

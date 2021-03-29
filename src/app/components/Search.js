@@ -3,6 +3,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import "../../App.css";
 import { makeStyles } from "@material-ui/core/styles";
+import { clearArtists } from "../redux/actions/artists";
 
 export default function Search({ searchQuery, setSearchQuery }) {
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ export default function Search({ searchQuery, setSearchQuery }) {
   const handleChange = (e) => {
     const target = e.target.value;
     dispatch(setSearchQuery(target));
+    if (target === '') {
+      dispatch(clearArtists())
+    }
   };
 
   return (
