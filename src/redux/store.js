@@ -1,5 +1,10 @@
-import { createStore } from 'redux';
-import { reducer } from './reducer';
+import { createStore, combineReducers } from 'redux';
+// import { reducer } from './reducer';
+import { artistsReducer } from './Reducers/artists';
 
-export let store = createStore(reducer);
+export const store = createStore(
+  combineReducers({
+    artists: artistsReducer
+  })
+);
 

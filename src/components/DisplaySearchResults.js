@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import Artist from "./Artist";
 import { useSelector } from "react-redux"
 
-export default function DisplaySearchResults({ accessToken }) {
-  const allArtists = useSelector((state) => state);
-  const displayArtists = () => {
+export default function DisplaySearchResults() {
+  const { artists } = useSelector((state) => state);
 
-    return allArtists.map((artist) => {
+  const displayArtists = () => {
+    return artists.map((artist) => {
       return (
         <Link
           to={`/${artist.id}`}
@@ -22,7 +22,7 @@ export default function DisplaySearchResults({ accessToken }) {
   return (
     <div>
       <InfiniteScroll
-        dataLength={allArtists.length}
+        dataLength={artists.length}
         // next={fetchmoreData}
         loader={<h4>Loading...</h4>}
         // hasMore={true}
