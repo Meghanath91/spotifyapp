@@ -1,6 +1,12 @@
 import { LOAD_MORE_ALBUMS, SET_ALBUMS } from "../actions/albums";
 import { albums } from "../states";
-export let albumsReducer = (state = albums, action) => {
+/**
+ * @func albumsReducer
+ * @param state 
+ * @param action 
+ * @return {Array}
+ */
+export const albumsReducer = (state = albums, action) => {
   let newAlbums;
 
   switch (action.type) {

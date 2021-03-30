@@ -13,7 +13,11 @@
   top: 0;
   width: 100%;
 }
-
+.logo-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
 /********** Login **********/
 
 .login-container {
@@ -71,6 +75,7 @@
 }
 /********** Artist **********/
 .artist-container {
+  cursor: pointer;
   flex-shrink: inherit;
   overflow: hidden;
   justify-content: space-between;
@@ -86,9 +91,25 @@
 .artist-container p {
   text-decoration: none;
 }
+.artist-img {
+  width: 200px;
+  height: 200px;
+}
+.rating-star-img {
+  width: 20px;
+  height: 20px;
+  margin: 3px;
+}
+.scroll-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  cursor: all-scroll;
+}
 
 /********** Album **********/
 .album-container {
+  cursor: pointer;
   flex-shrink: inherit;
   overflow: hidden;
   justify-content: space-between;
@@ -106,6 +127,10 @@
   margin: 0;
   padding: 0;
 }
+.album-container img {
+  width: 200px;
+  height: 200px;
+}
 .footer-link {
   padding: 3px;
   text-decoration: none;
@@ -113,7 +138,17 @@
   width: 100%;
   justify-content: space-around;
 }
+.footer-link img {
+  width: 20px;
+  height: 20px;
+}
 
+.error-container {
+  color: red;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
 @media only screen and (max-width: 768px) {
   .display-container {
     width: 100%;

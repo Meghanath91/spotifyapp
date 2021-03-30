@@ -7,7 +7,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { TokenContext } from "../context/TokenContext";
 import Album from "../components/Album";
 import { loadMoreAlbums, setAlbums } from "../redux/actions/albums";
-import callApi from "../helpers/getAlbums";
+import callApi from '../config/callApi'
+import Error from "../components/Error";
 
 export default function ArtistPage() {
   const { albums } = useSelector((state) => state);
@@ -16,8 +17,9 @@ export default function ArtistPage() {
   const { token } = useContext(TokenContext);
   const [nextPage, setNextPage] = useState("");
   const [artist, setArtist] = useState("")
-
+  const [error, setError] = useState("");
   const fetchmoreData = () => {
+    //middleware to call spotify api
     callApi(nextPage, token)
       .then(async (response) => {
         const results = await response.data.items;
@@ -27,12 +29,14 @@ export default function ArtistPage() {
       })
       .catch((err) => {
         console.log(err.response);
-        // setError("Something went wrong");
+        setError("Something went wrong");
       });
   };
 
   useEffect(() => {
-    callApi(id, token)
+    const url = `https://api.spotify.com/v1/artists/${id}/albums`;
+    //middleware to call spotify api
+    callApi(url, token)
       .then(async (response) => {
         const results = await response.data.items;
         const fetchArtist = await results[0].artists[0].name
@@ -43,7 +47,7 @@ export default function ArtistPage() {
       })
       .catch((err) => {
         console.log(err.response);
-        // setError("Something went wrong");
+        setError("Something went wrong");
       });
   }, [id, token, dispatch]);
 
@@ -64,17 +68,13 @@ export default function ArtistPage() {
         <h3>Albums</h3>
       </div>
       <div>
-        <InfiniteScroll
+        {error ? <Error error={error} /> : (<InfiniteScroll
           dataLength={albums.length}
           next={fetchmoreData}
           loader={<h4>Loading...</h4>}
           hasMore={true}
           height="60vh"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
+          className="scroll-container"
           endMessage={
             <p style={{ textAlign: "center" }}>
               <b>That's it !!!</b>
@@ -82,7 +82,8 @@ export default function ArtistPage() {
           }
         >
           {displayAlbums()}
-        </InfiniteScroll>
+        </InfiniteScroll>)}
+
       </div>
     </div>
   );

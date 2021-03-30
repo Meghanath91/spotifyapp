@@ -5,19 +5,32 @@ import DisplaySearchResults from "../components/DisplaySearchResults";
 import Login from "../components/Login";
 import Search from "../components/Search";
 import getUrlParams from "../helpers/getUrlParams";
-import callApi from "../helpers/getArtists";
+import callApi from "../config/callApi"
 import { TokenContext } from "../context/TokenContext";
 import { setArtists, loadMoreArtists } from "../redux/actions/artists";
 import { setSearchQuery } from "../redux/actions/search";
+import Error from "../components/Error";
 
+/**
+   * @func HomePage
+   * @return {HTML}
+   */
 export default function HomePage() {
   const [accessToken, setAccessToken] = useState(null);
   const [nextPage, setNextPage] = useState("");
+  const [error, setError] = useState("")
   const dispatch = useDispatch();
   //using context to set a global state user
   const { setToken } = useContext(TokenContext);
   const { searchQuery } = useSelector((state) => state);
+
+  /**
+   * @func fetchmoreData
+   * @return {undefined}
+   */
   const fetchmoreData = () => {
+
+    //middleware to call spotify api
     callApi(nextPage, accessToken)
       .then(async (response) => {
         const results = await response.data.artists.items;
@@ -26,20 +39,27 @@ export default function HomePage() {
         setNextPage(next);
       })
       .catch((err) => {
-        console.log(err.response);
-        // setError("Something went wrong");
+        setError("Something went wrong");
       });
   };
 
+  //useEffect to mount accessToken
   useEffect(() => {
     const token = getUrlParams();
     setToken(token);
     setAccessToken(token);
   }, [accessToken, setToken]);
 
+  //useEffect to mount list of artists
   useEffect(() => {
-    callApi(searchQuery, accessToken)
+    const searchUrl = `https://api.spotify.com/v1/search?query=${encodeURIComponent(
+      searchQuery
+    )}&type=artist`;
+
+    //middleware to call spotify api
+    callApi(searchUrl, accessToken)
       .then(async (response) => {
+
         const results = await response.data.artists.items;
         const next = await response.data.artists.next;
 
@@ -47,8 +67,9 @@ export default function HomePage() {
         setNextPage(next);
       })
       .catch((err) => {
-        console.log(err.response);
-        // setError("Something went wrong");
+        const errorMessage = err.response.data.error.message
+        if (errorMessage === 'The access token expired')
+          setError("Your session expired please sign in");
       });
   }, [searchQuery, accessToken, dispatch]);
 
@@ -58,7 +79,8 @@ export default function HomePage() {
         <div className="search-display-container">
           <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           <br />
-          <DisplaySearchResults fetchmoreData={fetchmoreData} nextPage={true} />
+          {error ? <div><Error error={error} /> <button>Login</button></div> : (<DisplaySearchResults fetchmoreData={fetchmoreData} nextPage={true} />)}
+
         </div>
       ) : (
           <Login />

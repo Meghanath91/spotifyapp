@@ -29,11 +29,6 @@ export default function DisplaySearchResults({ fetchmoreData, nextPage }) {
         loader={searchQuery !== '' ? (<h4>Loading...</h4>) : ''}
         hasMore={nextPage}
         height="60vh"
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
         endMessage={
           <p style={{ textAlign: "center" }}>
             <b>That's it !!!</b>

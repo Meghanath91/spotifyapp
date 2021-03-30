@@ -1,5 +1,12 @@
 import { SET_ARTISTS, LOAD_MORE_ARTISTS, CLEAR_ARTISTS } from "../actions/artists";
 import { artists } from "../states";
+
+/**
+ * @func artistsReducer
+ * @param state 
+ * @param action 
+ * @return {Array}
+ */
 export let artistsReducer = (state = artists, action) => {
   let newArtists;
 
@@ -14,6 +21,7 @@ export let artistsReducer = (state = artists, action) => {
       return [...newArtists];
     case CLEAR_ARTISTS:
       return [];
+
     default:
   }
   return state;

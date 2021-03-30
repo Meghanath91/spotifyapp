@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const callApi = async (id, accessToken) => {
-  const url = `https://api.spotify.com/v1/artists/${id}/albums`;
-
+const callApi = async (url, accessToken) => {
   const headers = {
     headers: {
       Accept: "application/json",
@@ -10,7 +8,6 @@ const callApi = async (id, accessToken) => {
       Authorization: `Bearer ${accessToken}`,
     },
   };
-
   return axios.get(url, headers)
 };
 export default callApi

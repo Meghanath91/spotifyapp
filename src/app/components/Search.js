@@ -46,7 +46,7 @@ export default function Search({ searchQuery, setSearchQuery }) {
   const handleChange = (e) => {
     const target = e.target.value;
     dispatch(setSearchQuery(target));
-    if (target === '') {
+    if (target === '' || searchQuery === '') {
       dispatch(clearArtists())
     }
   };
