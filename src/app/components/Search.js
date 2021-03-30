@@ -4,16 +4,24 @@ import { useDispatch } from "react-redux";
 import "../../App.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { clearArtists } from "../redux/actions/artists";
-
+/**
+ * @func Search
+ * @param {String} searchQuery
+ * @param {func} setSearchQuery
+ * @return {HTML}
+ */
 export default function Search({ searchQuery, setSearchQuery }) {
   const dispatch = useDispatch();
 
-
+  /**
+   * @func useStyles for material-ui custom styling
+   * @return {Object}
+   */
   const useStyles = makeStyles((theme) => ({
     searchField: {
       width: "30%",
-      [theme.breakpoints.down('sm')]: {
-        width: "90%"
+      [theme.breakpoints.down("sm")]: {
+        width: "90%",
       },
       "& input:valid + fieldset": {
         borderColor: "yellowgreen",
@@ -41,13 +49,15 @@ export default function Search({ searchQuery, setSearchQuery }) {
 
   const classes = useStyles();
 
-
-
+  /**
+   * @func handleChange
+   * @return {HTML}
+   */
   const handleChange = (e) => {
     const target = e.target.value;
     dispatch(setSearchQuery(target));
-    if (target === '' || searchQuery === '') {
-      dispatch(clearArtists())
+    if (target === "" || searchQuery === "") {
+      dispatch(clearArtists());
     }
   };
 

@@ -2,7 +2,19 @@ import React from "react";
 import noImage from "../images/no-image.jpg";
 import starImg from "../images/star.png";
 import "../../App.css";
+
+/**
+ * @func Artist
+ * @param {object} props artist
+ * @return {HTML}
+ */
 export default function Artist({ artist }) {
+
+  /**
+ * @func buildStarRating
+ * @param {Number} stars
+ * @return {HTML}
+ */
   function buildStarRating(stars) {
     return [...Array(stars)].map((element, index) => {
       return (

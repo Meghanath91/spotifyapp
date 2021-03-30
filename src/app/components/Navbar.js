@@ -2,8 +2,18 @@ import React from 'react'
 import logo from '../images/spotify.png'
 import { useHistory } from "react-router-dom";
 import '../../App.css'
+
+/**
+* @func Navbar
+* @return {HTML}
+*/
 export default function Navbar() {
+  //to redirect to home page
   const history = useHistory();
+  /**
+* @func handleClick
+* @return {undefined}
+*/
   const handleClick = () => {
     history.push('/');
   }

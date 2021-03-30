@@ -1,3 +1,7 @@
+/**
+* @func getUrlParams
+* @return {String} accessToken
+*/
 function getUrlParams() {
   let url = window.location.hash.substr(1);
   let accessToken = new URLSearchParams(url).get('access_token')

@@ -1,7 +1,17 @@
 import React from "react";
 import noImage from "../images/no-image.jpg";
 import previewBtn from "../images/1432343177.svg";
+
+/**
+ * @func Album
+ * @param {object} props album
+ * @return {HTML}
+ */
 export default function Album({ album }) {
+  /**
+ * @func displayArtists
+ * @return {HTML}
+ */
   const displayArtists = () => {
     return album.artists.map((artist) => {
       return <p key={artist.id}>{artist.name}</p>;

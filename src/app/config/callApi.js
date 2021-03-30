@@ -1,5 +1,11 @@
 import axios from "axios";
-
+/**
+ * @async
+ * @func callApi
+ * @param {String} url
+ * @param {String} accessToken
+ * @return {Promise}
+ */
 const callApi = async (url, accessToken) => {
   const headers = {
     headers: {
@@ -8,6 +14,6 @@ const callApi = async (url, accessToken) => {
       Authorization: `Bearer ${accessToken}`,
     },
   };
-  return axios.get(url, headers)
+  return axios.get(url, headers);
 };
-export default callApi
+export default callApi;

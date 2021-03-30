@@ -2,12 +2,20 @@ import React from "react";
 import { useSelector } from "react-redux"
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
-
 import Artist from "./Artist";
 
+/**
+* @func DisplaySearchResults
+* @param {func} fetchmoreData 
+* @param {string} nextPage
+* @return {HTML}
+*/
 export default function DisplaySearchResults({ fetchmoreData, nextPage }) {
   const { artists, searchQuery } = useSelector((state) => state);
-
+  /**
+  * @func displayArtists
+  * @return {HTML}
+  */
   const displayArtists = () => {
     return artists.map((artist) => {
       return (
