@@ -40,7 +40,7 @@ export default function ArtistPage() {
         const errorMessage = err.response.data.error.message;
         if (errorMessage === "The access token expired")
           setError("Your session expired please sign in");
-        else setError("Something went wrong, Please refresh");
+
       });
   };
 
@@ -61,7 +61,7 @@ export default function ArtistPage() {
         const errorMessage = err.response.data.error.message;
         if (errorMessage === "The access token expired")
           setError("Your session expired please sign in");
-        else setError("Something went wrong, Please refresh");
+
       });
   }, [id, token, dispatch]);
 
@@ -91,11 +91,6 @@ export default function ArtistPage() {
               hasMore={nextPage}
               height="60vh"
               className="scroll-container"
-              endMessage={
-                <p style={{ textAlign: "center" }}>
-                  <b>That's it !!!</b>
-                </p>
-              }
             >
               {displayAlbums()}
             </InfiniteScroll>

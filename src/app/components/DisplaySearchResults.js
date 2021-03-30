@@ -37,11 +37,6 @@ export default function DisplaySearchResults({ fetchmoreData, nextPage }) {
         loader={searchQuery !== '' ? (<h4>Loading...</h4>) : ''}
         hasMore={nextPage}
         height="60vh"
-        endMessage={
-          <p style={{ textAlign: "center" }}>
-            <b>That's it !!!</b>
-          </p>
-        }
       >
         {displayArtists()}
       </InfiniteScroll>

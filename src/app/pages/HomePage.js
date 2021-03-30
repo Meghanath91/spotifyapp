@@ -41,12 +41,13 @@ export default function HomePage() {
         const errorMessage = err.response.data.error.message;
         if (errorMessage === "The access token expired")
           setError("Your session expired please sign in");
-        else setError("Something went wrong, Please refresh");
+
       });
   };
 
   //useEffect to mount accessToken
   useEffect(() => {
+    setError(null)
     const token = getUrlParams();
     setToken(token);
     setAccessToken(token);
@@ -54,6 +55,7 @@ export default function HomePage() {
 
   //useEffect to mount list of artists
   useEffect(() => {
+    setError(null)
     const searchUrl = `https://api.spotify.com/v1/search?query=${encodeURIComponent(
       searchQuery
     )}&type=artist`;
@@ -71,7 +73,7 @@ export default function HomePage() {
         const errorMessage = err.response.data.error.message;
         if (errorMessage === "The access token expired")
           setError("Your session expired please sign in");
-        else setError("Something went wrong, Please refresh");
+
       });
   }, [searchQuery, accessToken, dispatch]);
 
@@ -83,7 +85,7 @@ export default function HomePage() {
           <br />
           {error ? (
             <div>
-              <Error error={error} /> <button>Login</button>
+              <Error error={error} />
             </div>
           ) : (
               <DisplaySearchResults
