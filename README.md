@@ -6,7 +6,7 @@ Please Visit https://spotifyartistapp.netlify.app/
 
 ## Screenshots
 
-!["Main Page"](https://github.com/Meghanath91/booklist/blob/main/public/pictures/main-web.png)
+!["Main Page"](https://github.com/Meghanath91/spotifyapp/blob/main/public/assets/albums.png?raw=true)
 
 !["Form"](https://github.com/Meghanath91/spotifyapp/blob/main/public/assets/artists.png?raw=true)
 
