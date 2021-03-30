@@ -88,7 +88,7 @@ export default function ArtistPage() {
               dataLength={albums.length}
               next={fetchmoreData}
               loader={<h4>Loading...</h4>}
-              hasMore={true}
+              hasMore={nextPage}
               height="60vh"
               className="scroll-container"
               endMessage={
